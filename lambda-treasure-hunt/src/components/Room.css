@@ -1,0 +1,14 @@
+.current_room_container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    /* align-content: flex-start; */
+    align-items: flex-start;
+
+    border: 1px solid red;
+}
+
+.cr_title, .cr_content{
+    padding: 3px;
+    margin: 0px;
+}

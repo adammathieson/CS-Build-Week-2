@@ -8193,6 +8193,31 @@ recursive-readdir@2.2.2:
   dependencies:
     minimatch "3.0.4"
 
+redux-devtools-extension@^2.13.8:
+  version "2.13.8"
+  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.8.tgz#37b982688626e5e4993ff87220c9bbb7cd2d96e1"
+  integrity sha512-8qlpooP2QqPtZHQZRhx3x3OP5skEV1py/zUdMY28WNAocbafxdG2tRD1MWE7sp8obGMNYuLWanhhQ7EQvT1FBg==
+
+redux-promise-middleware-actions@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/redux-promise-middleware-actions/-/redux-promise-middleware-actions-3.0.1.tgz#5922596a0a5cde73a4443b3e8c0528d6b36fa10d"
+  integrity sha512-j7e/lefdf2JozQAQYSkjvvYHzjhVKcRBGx6de6WANcuCWx13E0YXlIAABmVFm5Tq7yfVOPEBrAO0zDVEyMWq1A==
+  dependencies:
+    tslib "^1.10.0"
+
+redux-promise-middleware@^6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/redux-promise-middleware/-/redux-promise-middleware-6.1.2.tgz#1c14222686934be243cbb292e348ef7d5b20d6d2"
+  integrity sha512-ZqZu/nnSzGgwTtNbGoGVontpk7LjTOv0kigtt3CcgXI9gpq+8WlfXTXRZD0WTD5yaohRq0q2nYmJXSTjwXs83Q==
+
+redux@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.4.tgz#4ee1aeb164b63d6a1bcc57ae4aa0b6e6fa7a3796"
+  integrity sha512-vKv4WdiJxOWKxK0yRoaK3Y4pxxB0ilzVx6dszU2W8wLxlb2yikRph4iV/ymtdJ6ZxpBLFbyrxklnT5yBbQSl3Q==
+  dependencies:
+    loose-envify "^1.4.0"
+    symbol-observable "^1.2.0"
+
 regenerate-unicode-properties@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.1.0.tgz#ef51e0f0ea4ad424b77bf7cb41f3e015c70a3f0e"
@@ -9216,6 +9241,11 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+symbol-observable@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
+  integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
+
 symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
@@ -9403,7 +9433,7 @@ ts-pnp@1.1.4, ts-pnp@^1.1.2:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.1.4.tgz#ae27126960ebaefb874c6d7fa4729729ab200d90"
   integrity sha512-1J/vefLC+BWSo+qe8OnJQfWTYRS6ingxjwqmHMqaMxXMj7kFtKLgAaYW3JeX3mktjgUL+etlU8/B4VUAUI9QGw==
 
-tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
