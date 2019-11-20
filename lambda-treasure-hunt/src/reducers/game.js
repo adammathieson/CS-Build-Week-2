@@ -7,7 +7,7 @@ const initialState = {
     currentRoom: {}
 }
 
-export const gameReducer = (state = initialState, { type, payload }) {
+export const gameReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case fetchInit.pending.toString():
             return {

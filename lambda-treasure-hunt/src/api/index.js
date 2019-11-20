@@ -1,8 +1,6 @@
+import axios from 'axios'
 
 const { REACT_APP_KEY, REACT_APP_URL } = process.env
-// const key = process.env.REACT_APP_KEY
-// const url = process.env.REACT_APP_URL
-// const header = {headers: {Authorization: `Token ${key}`}}
 
 const axiosConfig = {
     baseURL: REACT_APP_URL
@@ -11,7 +9,7 @@ const axiosConfig = {
 const requestWithAuth = () => {
     const instance = axios.create({
         ...axiosConfig,
-        headers: {headers: {Authorization: `Token ${key}`}}
+        headers: {Authorization: `Token ${REACT_APP_KEY}`}
     })
     return instance
 }
@@ -21,15 +19,3 @@ export const init = async () => {
     console.log("with Auth: ------>", data)
     return data
 }
-
-// export const init = () => {
-//     axios
-//     .get(`${url}init/`, header)
-//     .then(res => {
-//         // console.log(res.data)
-//         return res.data
-//     })
-//     .catch(err => {
-//         console.log(err)
-//     })
-// }
