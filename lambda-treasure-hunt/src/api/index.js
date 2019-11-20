@@ -20,8 +20,8 @@ export const init = async () => {
     return data
 }
 
-export const move = async direction => {
-    const { data } = await requestWithAuth().post("move", direction)
+export const move = async dir => {
+    const { data } = await requestWithAuth().post("move", {"direction":dir})
     console.log("move: ------>", data)
     return data
 }

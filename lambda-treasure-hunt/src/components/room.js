@@ -10,6 +10,7 @@ const Room = ({room}) => {
             <p className="cr_content">{room.description}</p>
             <p className="cr_content">Items: {room.items}</p>
             <p className="cr_content">Terrain: {room.terrain}</p>
+            <p className="cr_content">Cooldown: {room.cooldown}</p>
             <p className="cr_content">Exits: {room.exits}</p>
         </div>
     )
