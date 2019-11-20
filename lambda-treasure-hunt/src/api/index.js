@@ -16,6 +16,12 @@ const requestWithAuth = () => {
 
 export const init = async () => {
     const { data } = await requestWithAuth().get("init")
-    console.log("with Auth: ------>", data)
+    console.log("init: ------>", data)
+    return data
+}
+
+export const move = async direction => {
+    const { data } = await requestWithAuth().post("move", direction)
+    console.log("move: ------>", data)
     return data
 }
