@@ -14,7 +14,6 @@ const Game = () => {
 
   return (
     <>
-      <h2>The Map</h2>
         <button onClick={() => dispatch(fetchInit())}>Start Game</button>
         <Room room={currentRoom}/>
         <Controls room={currentRoom}/>
