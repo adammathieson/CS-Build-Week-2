@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { fetchMove } from '../actions'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { chart } from '../chart'
 
 import Map from './Map'
 
@@ -9,15 +10,13 @@ import Map from './Map'
 const Controls = ({room}) => {
     // const [move, setMove] = useState({"direction": ""})
     const [prevRoom, setPrevRoom] = useState({})
-    const [dirToPrev, setdirToPrev] = useState('')
+    const [dirToPrev, setDirToPrev] = useState('')
     const dispatch = useDispatch()
-    console.log("previous Room --> ", prevRoom)
-    
-    // console.log("Room from props --> ", room)
 
-    // useEffect(() => {
-    //     setPrevRoom(room)
-    // }, [dispatch])  
+    
+
+    
+
     const opDir = dir => {
         return (
             dir === 'n' ? 's'
@@ -27,11 +26,20 @@ const Controls = ({room}) => {
         )
     }
 
-    const handleMove = (dir) => {
+    const handleMove = async (dir) => {
         setPrevRoom(room)
-        setdirToPrev(opDir(dir))
+        setDirToPrev(opDir(dir))
         dispatch(fetchMove(dir))
+        // if (gameError.length > 0) {
+        //     console.log(gameError[0])
+        // } else {
+        //     chart(prevRoom, room, dirToPrev)
+        // }
     }
+
+    useEffect(() => {
+        chart(prevRoom, room, dirToPrev)
+    }, [room])
 
 
     return (

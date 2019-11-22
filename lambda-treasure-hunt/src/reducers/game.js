@@ -4,7 +4,8 @@ const initialState = {
     inProgress: false,
     serverError: {},
     isServerError: false,
-    currentRoom: {}
+    currentRoom: {},
+    gameError: []
 }
 
 export const gameReducer = (state = initialState, { type, payload }) => {
@@ -22,6 +23,7 @@ export const gameReducer = (state = initialState, { type, payload }) => {
                 currentRoom: payload,
                 isServerError: false,
                 serverError: {},
+                gameError: payload.errors
             }
         case fetchInit.rejected.toString():
             return {
