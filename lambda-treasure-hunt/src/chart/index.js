@@ -1,16 +1,24 @@
 
 
+const opDir = dir => {
+    return (
+        dir === 'n' ? 's'
+        : dir === 's' ? 'n'
+        : dir === 'e' ? 'w'
+        : 'e'
+    )
+}
 
 export const chart = (prev, current, direction) => {
-    console.log(prev.room_id, current.room_id)
+    console.log('prev: ',prev.room_id, "cur: ", current.room_id)
     if (!current.exits) {
         console.log("no room object")
         return -1
     } else if (current.room_id === prev.room_id) {
-        console.log('you did not go anywhere')
+        console.log("you're not going anywhere")
         return -1
     } else if (direction === '') {
-        console.log('no direction')
+        console.log('you have no direction')
         return -1
     }
 
@@ -28,18 +36,27 @@ export const chart = (prev, current, direction) => {
     const graphMap = JSON.parse(localStorage.getItem('graphMap'))
     const keys = Object.keys(graphMap)
     const strID = JSON.stringify(current.room_id)
+    const preStrID = JSON.stringify(prev.room_id)
     // console.log("strID: ",strID)
 
     // If you enter another room log the previous room obj to corresponding direction
     if (keys.includes(strID)) {
 
-        const value = graphMap[strID][direction]
+        const value = graphMap[strID][opDir(direction)]
 
         if (value === '?') {
-            graphMap[current.room_id][direction] = prev
+            graphMap[current.room_id][opDir(direction)] = prev
             localStorage.setItem('graphMap', JSON.stringify(graphMap))
-            console.log(`Room id:${current.room_id} added room id: ${prev.room_id} to direction ${direction}`)
+            console.log(`Room id:${current.room_id} added room id: ${prev.room_id} to direction ${opDir(direction)}`)
         }
+
+        //TODO need to add this to below section when a room isn't in the graphMap yet
+        const preValue = graphMap[preStrID][opDir(direction)]
+            if (preValue === '?') {
+                console.log("previous room direction value for this room", preValue)
+                graphMap[prev.room_id][opDir(direction)] = current
+            }
+
     } else if (!keys.includes(strID)) {
         // current.exits()
         graphMap[current.room_id] = {}
@@ -48,12 +65,21 @@ export const chart = (prev, current, direction) => {
             graphMap[current.room_id][exit] = '?')
         )
         // current.exits.map(exit => graphMap[strID][exit] = '?')
-        graphMap[current.room_id][direction] = prev
+        graphMap[current.room_id][opDir(direction)] = prev
 
         localStorage.setItem('graphMap', JSON.stringify(graphMap))
 
         // graphMap[strID][direction] = JSON.stringify(prev)
         console.log("should add current object with direction obj value", current.room_id)
+
+        if (prev.room_id === undefined) {
+            console.log('here!!!!!!!!!!!!!', graphMap, preStrID)
+            const preValue = graphMap[preStrID][opDir(direction)]
+            if (preValue === '?') {
+                console.log("previous room direction value for this room", preValue)
+                graphMap[prev.room_id][opDir(direction)] = current
+            }
+        }
 
     } else {
         console.log("Game not initialized", current.room_id, prev.room_id)
