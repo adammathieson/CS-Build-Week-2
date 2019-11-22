@@ -56,6 +56,9 @@ export const chart = (prev, current, direction) => {
             if (preValue === '?') {
                 console.log("previous room direction value for this room", preValue)
                 graphMap[prev.room_id][direction] = current
+                if (!graphMap[prev.room_id]['self']) {
+                    graphMap[prev.room_id]['self'] = prev
+                }
             }
         }
 
@@ -68,6 +71,10 @@ export const chart = (prev, current, direction) => {
         )
 
         graphMap[current.room_id][opDir(direction)] = prev
+        if (!graphMap[current.room_id]['self']) {
+            graphMap[current.room_id]['self'] = current
+        }
+        
 
         localStorage.setItem('graphMap', JSON.stringify(graphMap))
 
@@ -86,6 +93,9 @@ export const chart = (prev, current, direction) => {
             if (preValue === '?') {
                 console.log("previous room direction value for this room", preValue)
                 graphMap[prev.room_id][direction] = current
+                if (!graphMap[prev.room_id]['self']) {
+                    graphMap[prev.room_id]['self'] = prev
+                }
                 localStorage.setItem('graphMap', JSON.stringify(graphMap))
             }
         }
