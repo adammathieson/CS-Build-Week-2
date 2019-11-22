@@ -51,11 +51,13 @@ export const chart = (prev, current, direction) => {
         }
 
         //TODO need to add this to below section when a room isn't in the graphMap yet
-        const preValue = graphMap[preStrID][opDir(direction)]
+        if (prev.room_id !== undefined) {
+        const preValue = graphMap[preStrID][direction]
             if (preValue === '?') {
                 console.log("previous room direction value for this room", preValue)
-                graphMap[prev.room_id][opDir(direction)] = current
+                graphMap[prev.room_id][direction] = current
             }
+        }
 
     } else if (!keys.includes(strID)) {
         // current.exits()
@@ -64,7 +66,7 @@ export const chart = (prev, current, direction) => {
         current.exits.map(exit => (
             graphMap[current.room_id][exit] = '?')
         )
-        // current.exits.map(exit => graphMap[strID][exit] = '?')
+
         graphMap[current.room_id][opDir(direction)] = prev
 
         localStorage.setItem('graphMap', JSON.stringify(graphMap))
@@ -72,12 +74,19 @@ export const chart = (prev, current, direction) => {
         // graphMap[strID][direction] = JSON.stringify(prev)
         console.log("should add current object with direction obj value", current.room_id)
 
-        if (prev.room_id === undefined) {
+        if (prev.room_id !== undefined) {
+            if (!keys.includes(preStrID)) {
+                graphMap[prev.room_id] = {}
+                prev.exits.map(exit => (
+                    graphMap[prev.room_id][exit] = '?'
+                ))
+            }
             console.log('here!!!!!!!!!!!!!', graphMap, preStrID)
-            const preValue = graphMap[preStrID][opDir(direction)]
+            const preValue = graphMap[preStrID][direction]
             if (preValue === '?') {
                 console.log("previous room direction value for this room", preValue)
-                graphMap[prev.room_id][opDir(direction)] = current
+                graphMap[prev.room_id][direction] = current
+                localStorage.setItem('graphMap', JSON.stringify(graphMap))
             }
         }
 
