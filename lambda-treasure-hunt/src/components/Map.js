@@ -21,7 +21,7 @@ const Map = ({room}) => {
         }
         for (let i = 0; i < twoDMap.length; i++) {
             for (let j = 0; j < twoDMap.length; j++) {
-                    twoDMap[i][j] = <div className="space" ></div>
+                    twoDMap[j][i] = <div className="space" ></div>
             }
         }
         // twoDMap.forEach(arr => {
