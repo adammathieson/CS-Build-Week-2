@@ -60,7 +60,7 @@ const Controls = ({room}) => {
                 <button className="game-btn" onClick={() => handleMove("s")}>S</button>
                 <button className="game-btn" onClick={() => handleMove("w")}>W</button>
             </div>
-            <Map />
+            <Map room={room}/>
         </>
     )
 }
