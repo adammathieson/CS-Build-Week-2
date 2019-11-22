@@ -10,7 +10,7 @@ import Map from './Map'
 const Controls = ({room}) => {
     const [prevRoom, setPrevRoom] = useState({})
     const [dirToPrev, setDirToPrev] = useState('')
-    const [dirOfNext, setDirOfNext] = useState('?')
+    // const [dirOfNext, setDirOfNext] = useState('?')
     const dispatch = useDispatch()
     console.log("=======>", prevRoom, room)
 
@@ -60,7 +60,7 @@ const Controls = ({room}) => {
                 <button className="game-btn" onClick={() => handleMove("s")}>S</button>
                 <button className="game-btn" onClick={() => handleMove("w")}>W</button>
             </div>
-            <Map prev={prevRoom} room={room} dirToPrev={dirToPrev}/>
+            <Map />
         </>
     )
 }

@@ -1,0 +1,6 @@
+.grid-container {
+    max-width: 400px;
+    font-size: .5rem;
+    display: grid;
+    grid-template-columns: repeat(70, 1fr);
+}
