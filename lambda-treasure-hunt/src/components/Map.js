@@ -10,60 +10,52 @@ const Map = ({room}) => {
     }, [room])
 
     const createTable = () => {
+        const danger = [302,422,426,455,457,361,415,242,339]
         let graphMap
         let keys
         let x
         let y
         // Initialize a two dimensional array
-        const twoDMap = new Array(70)
+        const twoDMap = new Array(80)
         for (let i = 0; i < twoDMap.length; i++) {
-            twoDMap[i] = new Array(70)
+            twoDMap[i] = new Array(80)
         }
         for (let i = 0; i < twoDMap.length; i++) {
             for (let j = 0; j < twoDMap.length; j++) {
-                    twoDMap[j][i] = <div className="space" ></div>
+                    twoDMap[i][j] = <div className="space" ></div>
             }
         }
-        // twoDMap.forEach(arr => {
-        //     arr.forEach(space => )
-        // })
-        // twoDMap[25][60] = 'hello'
-        // console.log("Empty space???", twoDMap[25][60])
-        // console.log("----->", twoDMap[25][60])
 
         // Check if graphMap is there, if yes set to variable
         if (localStorage.getItem('graphMap')) {
             graphMap = JSON.parse(localStorage.getItem('graphMap'))
-            console.log(graphMap)
+            // console.log(graphMap)
             keys = Object.keys(graphMap)
-            console.log(keys.length)
+            console.log("found rooms:", keys.length)
         }
 
         keys.map(key => {
             x = graphMap[key].self.coordinates.slice(1,3)
             y = graphMap[key].self.coordinates.slice(4,6)
             const mapID = graphMap[key].self.room_id
-            console.log(key, x, y)
+            // console.log(key, x, y)
             twoDMap[y][x] = <div 
-                                className={mapID === current.room_id ? "space room current" : "space room" }
+                                className={mapID === current.room_id ? "space room current" : danger.includes(mapID) ? "danger space" : "space room" }
                                 key={mapID}>{mapID}
                             </div>
         })
 
-        console.log(twoDMap)
-
-        // twoDMap.forEach(item => {
-        //     let count = 70
-        //     while (count < 0) {
-        //         item.push('🟢')
-        //         count--
-        //     }
-        // })
-        
-        twoDMap.map(item => console.log(item.length))
         return twoDMap
     }
-    
+
+    // let count = room.cooldown
+    // const timer = interval => {
+    //     setInterval(() => console.log(count), interval)
+    //     count--
+    // }
+
+// console.log(JSON.parse(localStorage.getItem('graphMap')))
+
 
     return (
         <div>
@@ -71,6 +63,7 @@ const Map = ({room}) => {
             <div className="grid-container">
                 {createTable()}
             </div>
+            
             
         </div>
     )

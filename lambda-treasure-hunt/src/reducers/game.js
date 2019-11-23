@@ -1,4 +1,4 @@
-import { fetchInit, fetchMove, fetchStatus } from '../actions'
+import { fetchInit, fetchMove, fetchStatus,fetchTake, fetchDrop, fetchPray, fetchSell, fetchExamine } from '../actions'
 
 const initialState = {
     inProgress: false,
@@ -6,7 +6,12 @@ const initialState = {
     isServerError: false,
     currentRoom: {},
     gameError: [],
-    status: {}
+    status: {},
+    take: {},
+    drop: {},
+    pray: {},
+    sell: {},
+    examine: {},
 }
 
 export const gameReducer = (state = initialState, { type, payload }) => {
@@ -75,6 +80,112 @@ export const gameReducer = (state = initialState, { type, payload }) => {
                 isServerError: true,
                 serverError: payload
             }
+        // Taking things
+        case fetchTake.pending.toString():
+            return {
+                ...state,
+                inProgress: true,
+            }
+        case fetchTake.fulfilled.toString():
+            return {
+                ...state,
+                inProgress: false,
+                take: payload,
+                isServerError: false,
+                serverError: {},
+            }
+        case fetchTake.rejected.toString():
+            return {
+                ...state,
+                inProgress: false,
+                isServerError: true,
+                serverError: payload
+            }
+        // Drop something
+        case fetchDrop.pending.toString():
+            return {
+                ...state,
+                inProgress: true,
+            }
+        case fetchDrop.fulfilled.toString():
+            return {
+                ...state,
+                inProgress: false,
+                drop: payload,
+                isServerError: false,
+                serverError: {},
+            }
+        case fetchDrop.rejected.toString():
+            return {
+                ...state,
+                inProgress: false,
+                isServerError: true,
+                serverError: payload
+            }
+        // Pray
+        case fetchPray.pending.toString():
+            return {
+                ...state,
+                inProgress: true,
+            }
+        case fetchPray.fulfilled.toString():
+            return {
+                ...state,
+                inProgress: false,
+                pray: payload,
+                isServerError: false,
+                serverError: {},
+            }
+        case fetchPray.rejected.toString():
+            return {
+                ...state,
+                inProgress: false,
+                isServerError: true,
+                serverError: payload
+            }
+        // Sell
+        case fetchSell.pending.toString():
+            return {
+                ...state,
+                inProgress: true,
+            }
+        case fetchSell.fulfilled.toString():
+            return {
+                ...state,
+                inProgress: false,
+                sell: payload,
+                isServerError: false,
+                serverError: {},
+            }
+        case fetchSell.rejected.toString():
+            return {
+                ...state,
+                inProgress: false,
+                isServerError: true,
+                serverError: payload
+            }
+        // Examine
+        case fetchExamine.pending.toString():
+            return {
+                ...state,
+                inProgress: true,
+            }
+        case fetchExamine.fulfilled.toString():
+            return {
+                ...state,
+                inProgress: false,
+                examine: payload,
+                isServerError: false,
+                serverError: {},
+            }
+        case fetchExamine.rejected.toString():
+            return {
+                ...state,
+                inProgress: false,
+                isServerError: true,
+                serverError: payload
+            }
+
         default:
             return state
     }

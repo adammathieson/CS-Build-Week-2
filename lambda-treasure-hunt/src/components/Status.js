@@ -12,6 +12,7 @@ const Status = ({status}) => {
             <p className="cr_content">Strength: {status.strength}</p>
             <p className="cr_content">Speed: {status.speed}</p>
             <p className="cr_content">Inventory: {status.inventory}</p>
+            <p className="cr_content">Gold: {status.gold}</p>
             <p className="cr_content">Status: {status.status}</p>
             <p className="cr_content">Footwear: {status.footwear}</p>
             <p className="cr_content">Body wear: {status.bodywear}</p>
