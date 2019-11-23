@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { fetchMove, fetchTake, fetchDrop, fetchPray, fetchSell, fetchExamine } from '../actions'
+import { fetchMove, fetchTake, fetchDrop, fetchPray, fetchSell, fetchExamine, fetchChangeName } from '../actions'
 import { useDispatch } from "react-redux"
 import { chart } from '../chart'
 
@@ -86,6 +86,10 @@ const Controls = ({room, status}) => {
         fetchExamine(name)
     }
 
+    const handleChangeName = name => {
+        fetchChangeName(name)
+    }
+
     useEffect(() => {
         // setPrevRoom(room)
         chart(prevRoom, room, dirToPrev)
@@ -108,6 +112,7 @@ const Controls = ({room, status}) => {
                 <button onClick={() => handleSell(status.inventory[0])}>Sell</button>
                 <button onClick={() => autoMove()}>Auto Move</button>
                 <button onClick={() => handleExamine(room.title)}>Examine</button>
+                <button onClick={() => handleChangeName("Adam")}>Change Name</button>
 
             </div>
             <Map room={room}/>

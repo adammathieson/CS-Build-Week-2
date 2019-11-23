@@ -2,7 +2,7 @@
     /* width: 100%; */
     font-size: .5rem;
     display: grid;
-    grid-template-columns: repeat(80, 1fr);
+    grid-template-columns: repeat(79, 1fr);
     /* border: 1px solid red; */
     transform: translateX(50%) rotate(180deg);
 }
@@ -26,4 +26,8 @@
 
 .danger {
     background: red;
+}
+
+.well {
+    background: purple;
 }

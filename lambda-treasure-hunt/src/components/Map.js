@@ -11,14 +11,15 @@ const Map = ({room}) => {
 
     const createTable = () => {
         const danger = [302,422,426,455,457,361,415,242,339]
+        const well = 55
         let graphMap
         let keys
         let x
         let y
         // Initialize a two dimensional array
-        const twoDMap = new Array(80)
+        const twoDMap = new Array(79)
         for (let i = 0; i < twoDMap.length; i++) {
-            twoDMap[i] = new Array(80)
+            twoDMap[i] = new Array(79)
         }
         for (let i = 0; i < twoDMap.length; i++) {
             for (let j = 0; j < twoDMap.length; j++) {
@@ -40,7 +41,7 @@ const Map = ({room}) => {
             const mapID = graphMap[key].self.room_id
             // console.log(key, x, y)
             twoDMap[y][x] = <div 
-                                className={mapID === current.room_id ? "space room current" : danger.includes(mapID) ? "danger space" : "space room" }
+                                className={mapID === current.room_id ? "space room current" : danger.includes(mapID) ? "danger space" : mapID === well ? "well space" : "space room" }
                                 key={mapID}>{mapID}
                             </div>
         })
