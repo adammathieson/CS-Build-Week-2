@@ -67,3 +67,24 @@ export const changeName = async name => {
     console.log("change_name ------>", data)
     return data
 }
+
+export const getProof = () => {
+    axios
+        .get('https://lambda-treasure-hunt.herokuapp.com/api/bc/last_proof/', {headers: {Authorization: `Token ${REACT_APP_KEY}`}})
+        .then(res => console.log(res))
+}
+
+const body = {"proof":15132323}
+export const mine = new_proof => {
+    axios
+    .post('https://lambda-treasure-hunt.herokuapp.com/api/bc/mine/', body, {headers: {Authorization: `Token ${REACT_APP_KEY}`}})
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+}
+
+const proof = 15132323
+mine(proof)
+// getProof()
+
+
+// {proof: 10039127, difficulty: 6, cooldown: 1, messages: Array(0), errors: Array(0)}
