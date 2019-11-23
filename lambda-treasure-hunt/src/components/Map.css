@@ -19,3 +19,7 @@
 .room {
     background: red;
 }
+
+.current {
+    background: blue;
+}

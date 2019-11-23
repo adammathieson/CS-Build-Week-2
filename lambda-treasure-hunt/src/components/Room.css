@@ -12,3 +12,8 @@
     padding: 3px;
     margin: 0px;
 }
+
+/* game container */
+.info {
+    display: flex;
+}

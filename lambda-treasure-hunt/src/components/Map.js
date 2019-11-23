@@ -42,8 +42,12 @@ const Map = ({room}) => {
         keys.map(key => {
             x = graphMap[key].self.coordinates.slice(1,3)
             y = graphMap[key].self.coordinates.slice(4,6)
+            const mapID = graphMap[key].self.room_id
             console.log(key, x, y)
-            twoDMap[y][x] = <div className="space room" key={graphMap[key].self.room_id}>{graphMap[key].self.room_id}</div>
+            twoDMap[y][x] = <div 
+                                className={mapID === current.room_id ? "space room current" : "space room" }
+                                key={mapID}>{mapID}
+                            </div>
         })
 
         console.log(twoDMap)

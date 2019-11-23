@@ -25,3 +25,9 @@ export const move = async (dir, id) => {
     console.log("move: ------>", data)
     return data
 }
+
+export const status = async () => {
+    const { data } = await requestWithAuth().post("status")
+    console.log("status ------>", data)
+    return data
+}

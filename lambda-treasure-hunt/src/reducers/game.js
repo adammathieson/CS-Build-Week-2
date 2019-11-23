@@ -1,11 +1,12 @@
-import { fetchInit, fetchMove } from '../actions'
+import { fetchInit, fetchMove, fetchStatus } from '../actions'
 
 const initialState = {
     inProgress: false,
     serverError: {},
     isServerError: false,
     currentRoom: {},
-    gameError: []
+    gameError: [],
+    status: {}
 }
 
 export const gameReducer = (state = initialState, { type, payload }) => {
@@ -53,7 +54,27 @@ export const gameReducer = (state = initialState, { type, payload }) => {
                 isServerError: true,
                 serverError: payload
             }
-        
+        // Getting status
+        case fetchStatus.pending.toString():
+            return {
+                ...state,
+                inProgress: true,
+            }
+        case fetchStatus.fulfilled.toString():
+            return {
+                ...state,
+                inProgress: false,
+                status: payload,
+                isServerError: false,
+                serverError: {},
+            }
+        case fetchStatus.rejected.toString():
+            return {
+                ...state,
+                inProgress: false,
+                isServerError: true,
+                serverError: payload
+            }
         default:
             return state
     }
